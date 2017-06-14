@@ -4,5 +4,17 @@ gettingStarted:
   howto: How to complete the guide
 writingTheApp:
   title: Writing the Application
+  installDatabase: Install Database
+  domainClassAndController: Domain Class and Controller
+  installPlugin: Install Database Migration Plugin
+databaseMigrationInAction:
+  title: Database Migration In Action
+  baseline: Baseline for Database Migration
+  makeColumnNullable: Make Column Nullable
+  addAttributes: Add Attributes
+  redesignTables: Redesign Tables
+  additionalTips: Additional Tips
+summary:
+    title: Summary
 runningTheApp:
-  title: Running the Application
+    title: Running the Application
