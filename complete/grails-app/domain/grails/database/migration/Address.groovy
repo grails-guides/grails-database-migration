@@ -4,18 +4,18 @@ import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
 class Address {
-    String name
-    int age
+    Person person
     String streetName
     String city
     String zipCode
 
+    static belongsTo = [person: Person]
+
     String toString() {
-        name
+        "${streetName}, ${city}, ${zipCode}"
     }
 
     static constraints = {
-        age(nullable: true)
         streetName(nullable: true)
         city(nullable: true)
         zipCode(nullable: true)

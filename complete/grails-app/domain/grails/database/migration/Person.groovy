@@ -6,9 +6,8 @@ import grails.compiler.GrailsCompileStatic
 class Person {
     String name
     int age
-    String streetName
-    String city
-    String zipCode
+
+    static hasMany = [addresses: Address]
 
     String toString() {
         name
@@ -16,8 +15,5 @@ class Person {
 
     static constraints = {
         age(nullable: true)
-        streetName(nullable: true)
-        city(nullable: true)
-        zipCode(nullable: true)
     }
 }
