@@ -26,10 +26,12 @@ databaseChangeLog = {
         addForeignKeyConstraint(baseColumnNames: "person_id", baseTableName: "address", constraintName: "FK81ihijcn1kdfwffke0c0sjqeb", deferrable: "false", initiallyDeferred: "false", referencedColumnNames: "id", referencedTableName: "person")
     }
 
-    changeSet(author: "a488338 (generated)", id: "migrate-person-data") {
+    // tag::customDataSql[]
+    changeSet(author: "a488338 (generated)", id: "migrate-person-data") { // <1>
         sql("""insert into address (version, person_id, street_name, city, zip_code)
               select 0, id, street_name, city, zip_code from person""")
     }
+    // end::customDataSql[]
 
     changeSet(author: "Nirav Assar (generated)", id: "1497553930799-3") {
         dropColumn(columnName: "city", tableName: "person")
