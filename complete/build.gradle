@@ -7,6 +7,7 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.1"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        classpath 'org.grails.plugins:database-migration:3.0.3'
     }
 }
 
@@ -42,10 +43,13 @@ dependencies {
     profile "org.grails.profiles:web"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.1"
     runtime "com.h2database:h2"
+    runtime 'mysql:mysql-connector-java:5.1.36'
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    compile 'org.grails.plugins:database-migration:3.0.3'
+    compile 'org.liquibase:liquibase-core:3.5.3'
 }
 
 bootRun {
@@ -57,4 +61,12 @@ bootRun {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'grails-app/migrations'
+        }
+    }
 }
