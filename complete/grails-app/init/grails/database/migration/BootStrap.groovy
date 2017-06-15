@@ -18,8 +18,9 @@ class BootStrap {
                 [name: 'Sergio', age: 36]
         ]
 
-        for ( Map<String, Object> s : persons ) {
-            new Person(name: s.name, age: s.age).save(flush: true)
+        for ( Map<String, Object> p : persons ) {
+            // only create person if it doesn't exist
+            Person.findByName(p.name) ?: new Person(name: p.name, age: p.age).save(flush: true)
         }
     }
 

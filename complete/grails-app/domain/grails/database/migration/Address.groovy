@@ -3,7 +3,7 @@ package grails.database.migration
 import grails.compiler.GrailsCompileStatic
 
 @GrailsCompileStatic
-class Person {
+class Address {
     String name
     int age
     String streetName
