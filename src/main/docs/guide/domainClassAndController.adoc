@@ -1,1 +1,41 @@
-TODO: Complete the guide
+We will start by creating a basic `Person` class and `PersonController`. We will proceed to seed data in the application, then view
+that our application runs. This will put in a position so that we can move onto the database migration aspects of development.
+
+Create a domain class in the appropriate package:
+
+[source, groovy]
+.grails-app/domain/grails/database/migration/Person.groovy
+----
+include::{sourceDir}/src/version-code/Person.groovy_v0[indent=0]
+----
+
+Create a controller with a scaffold in the appropriate package:
+
+[source, groovy]
+.grails-app/controllers/grails/database/migration/Person.groovy
+----
+include::{sourceDir}/grails-app/controllers/grails/database/migration/PersonController.groovy[indent=0]
+----
+
+In order to create some seed data, add to the `BootStrap.groovy`.
+
+[source, groovy]
+.grails-app/init/grails/database/migration/BootStrap.groovy
+----
+include::{sourceDir}/grails-app/init/grails/database/migration/BootStrap.groovy[indent=0]
+----
+
+Run the Grails application. This will allow GORM to create the `Person` table automatically, create data, and startup the application.
+
+[source, bash]
+----
+> grails run-app
+----
+
+In the MySql Command Line Client, check that the person table exists:
+
+[source, bash]
+----
+> show tables;
+> select * from person;
+----
