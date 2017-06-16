@@ -96,18 +96,22 @@ hibernate:
         use_query_cache: false
         region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
 
+# tag::dataSource[]
 dataSource:
     pooled: true
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password: root
+# end::dataSource[]
 
+# tag::dbUrl[]
 environments:
     development:
         dataSource:
             dbCreate: none
             url: jdbc:mysql://localhost:3306/dbmigration?useUnicode=yes&characterEncoding=UTF-8
+# end::dbUrl[]
     test:
         dataSource:
             dbCreate: update
