@@ -1,1 +1,42 @@
-TODO: Complete the guide
+We must create a baseline for database migration operations. This essentially consists of creating the initial database tables.
+This does not use GORM automation, rather by using liquibase in the plugin. (Note we have already defined the current state of the domain by
+creating the `Person` class, so we will be creating the database table in this step.)
+
+Up till now GORM has been managing the creation of tables. This is based on the variable `dbCreate: create-drop`. We need
+the value to `none` so that liquibase can take over table creation. In addition, we will set the database url.
+
+[source, groovy]
+.grails-app/conf/application.yml
+----
+...
+include::{sourceDir}/grails-app/conf/application.yml[tags=dbUrl]
+...
+----
+
+Next we need to tell the plugin that we want to run migrations on startup.
+
+[source, groovy]
+.grails-app/conf/application.yml
+----
+...
+include::{sourceDir}/grails-app/conf/application.yml[tags=updateOnStartUp]
+...
+----
+
+We can proceed to generate the `changelog.groovy` and then create the table with the plugin. The `changelog.groovy` will contain
+ DSL instructions for table created. Note that previously with the variable `dbCreate: create-drop`, at the current state when the application
+ is not running, there will be no tables present. _Make sure the app is not running before running these commands_:
+
+[source, bash]
+----
+> grails dbm-generate-gorm-changelog changelog.groovy
+> grails dbm-update
+> grails run-app
+----
+
+View the database tables again in MySql Command Client
+
+----
+> show tables;
+> describe person;
+----

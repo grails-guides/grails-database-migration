@@ -139,5 +139,7 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
+# tag::updateOnStartUp[]
 grails.plugin.databasemigration.updateOnStart: true
 grails.plugin.databasemigration.updateOnStartFileNames: 'changelog.groovy'
+# end::updateOnStartUp[]

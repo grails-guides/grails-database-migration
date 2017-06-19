@@ -1,1 +1,29 @@
-TODO: Complete the guide
+To install the http://grails-plugins.github.io/grails-database-migration/3.0.x/index.html[Grails Database Migration Plugin]
+we need to add to `build.gradle`:
+
+[source, groovy]
+.build.gradle
+----
+buildscript {
+   dependencies {
+      ...
+      classpath 'org.grails.plugins:database-migration:3.0.3'
+   }
+}
+
+dependencies {
+    ...
+    compile 'org.grails.plugins:database-migration:3.0.3'
+    compile 'org.liquibase:liquibase-core:3.5.3'
+}
+
+
+// tell Gradle about the migrations folder
+sourceSets {
+    main {
+        resources {
+            srcDir 'grails-app/migrations'
+        }
+    }
+}
+----

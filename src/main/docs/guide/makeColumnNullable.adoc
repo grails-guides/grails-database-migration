@@ -1,1 +1,28 @@
-TODO: Complete the guide
+In this section we will do a simple change to make a column nullable. The `age` column currently requires a variable. We
+make it nullable, and proceed to migrate the database to reflect that.
+
+image::migration1.jpg[400,400]
+
+In the `Person` domain object, make the age attribute nullable:
+
+[source, groovy]
+.grails-app/domain/grails/database/migration/Person.groovy
+----
+include::{sourceDir}/src/version-code/Person.groovy_v1[indent=0]
+----
+
+Note that making the change in the domain object does not affect the database. We must generate additions to the `changelog.groovy`
+for the change to take affect. Run the commands below to run the database migration.
+
+[source, bash]
+----
+> grails dbm-gorm-diff change-age-constraint-to-nullable.groovy --add // this will create a small file and append the name
+changelog.groovy
+> grails run-app
+----
+
+View the database tables again in MySql Command Client to see the column adjusted to be nullable.
+
+----
+> describe person;
+----
