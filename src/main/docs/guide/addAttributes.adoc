@@ -1,1 +1,25 @@
-TODO: Complete the guide
+We will add some attributes to the `Person` class for information for an address to demonstrate our second migration.
+
+image::migration2.jpg[400,400]
+
+[source, groovy]
+.grails-app/domain/grails/database/migration/Person.groovy
+----
+include::{sourceDir}/src/version-code/Person.groovy_v2[indent=0]
+----
+
+[source, bash]
+----
+> grails dbm-gorm-diff add-address-fields-to-person.groovy --add
+> grails run-app
+----
+
+
+View the database tables MySql Command Client.
+
+----
+> describe person;
+----
+
+Proceed to the application and use the UI to add address data into the `Person` rows. This will set us up for a slightly more
+complicated migration in the next section.
