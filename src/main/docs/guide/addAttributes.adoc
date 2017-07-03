@@ -1,4 +1,4 @@
-We will add some attributes to the `Person` class for information for an address to demonstrate our second migration.
+We will add some attributes to the `Person` class for an address to demonstrate our second migration.
 
 image::migration2.jpg[400,400]
 

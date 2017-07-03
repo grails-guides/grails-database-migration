@@ -1,4 +1,4 @@
-In this section we will do a simple change to make a column nullable. The `age` column currently requires a variable. We
+In this section we will do a simple change to make a column nullable. The `age` column currently requires a value. We
 make it nullable, and proceed to migrate the database to reflect that.
 
 image::migration1.jpg[400,400]

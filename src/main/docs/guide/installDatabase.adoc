@@ -5,7 +5,7 @@ Let's setup a physical database with MySql, instead of relying on the default H2
 - Open the MySql Command Line Client
 
 Run these commands in the command line client in order to create and use the database. The `show tables` command should
-return and empty set.
+return an empty set.
 
 [source, bash]
 ----
@@ -14,7 +14,7 @@ return and empty set.
 > show tables;
 ----
 
-Now we need to configure the Grails application to point to the fresh and new `dbmigration` database. We will be editing
+Now we need to configure the Grails application to point to the new `dbmigration` database. We will be editing
 the `build.gradle` and `application.yml` files.
 
 [source, groovy]

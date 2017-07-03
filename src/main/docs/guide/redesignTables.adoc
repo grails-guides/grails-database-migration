@@ -2,8 +2,8 @@ Let's say we would like to redesign `Person` to split the address fields into it
 would be that now a `Person` can have many `Address` 's. When doing this type of domain object redesign we have to consider a few aspects:
 
 1. The database table schema definition will change
-2. Existing data in the table will have to be split amongst the new database table created
-3. We can write custom sql in the database migration to transfer existing data
+2. Existing data in the table will have to be split amongst the new database tables created
+3. We can write custom sql in the changelog files to transfer existing data
 
 The image below depicts the redesign:
 
@@ -50,7 +50,7 @@ include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tags=cust
 // drop person columns...
 ----
 
-Run the Grails application. And view the data is migrated
+Run the Grails application. View the data is migrated in the UI.
 
 [source, bash]
 ----

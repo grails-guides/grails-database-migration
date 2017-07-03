@@ -1,5 +1,5 @@
-We will start by creating a basic `Person` class and `PersonController`. We will proceed to seed data in the application, then view
-that our application runs. This will put in a position so that we can move onto the database migration aspects of development.
+We will start by creating a basic `Person` class and `PersonController`. We will seed data in the application, then view
+that our application runs. We will then move onto the database migration aspects of development.
 
 Create a domain class in the appropriate package:
 
@@ -32,7 +32,7 @@ Run the Grails application. This will allow GORM to create the `Person` table au
 > grails run-app
 ----
 
-In the MySql Command Line Client, check that the person table exists:
+In the MySql Command Line Client, check that the person table exists with data:
 
 [source, bash]
 ----

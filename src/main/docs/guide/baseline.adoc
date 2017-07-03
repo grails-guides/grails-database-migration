@@ -24,8 +24,8 @@ include::{sourceDir}/grails-app/conf/application.yml[tags=updateOnStartUp]
 ----
 
 We can proceed to generate the `changelog.groovy` and then create the table with the plugin. The `changelog.groovy` will contain
- DSL instructions for table created. Note that previously with the variable `dbCreate: create-drop`, at the current state when the application
- is not running, there will be no tables present. _Make sure the app is not running before running these commands_:
+ DSL instructions for table creation. Note that previously with the variable `dbCreate: create-drop`, at the current state when the application
+ is not running, there will be no tables present. _Make sure the app is down before running these commands_:
 
 [source, bash]
 ----
