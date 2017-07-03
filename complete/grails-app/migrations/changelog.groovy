@@ -1,8 +1,6 @@
-// tag::changeLogBeginning[]
-databaseChangeLog = {
-// end::changeLogBeginning[]
 
-    // tag::personTable[]
+databaseChangeLog = {
+
     changeSet(author: "Nirav Assar (generated)", id: "1497549057046-1") {
         createTable(tableName: "person") {
             column(autoIncrement: "true", name: "id", type: "BIGINT") {
@@ -22,18 +20,10 @@ databaseChangeLog = {
             }
         }
     }
-    // end::personTable[]
 
-    // tag::includeChangeAge[]
     include file: 'change-age-constraint-to-nullable.groovy'
-    // end::includeChangeAge[]
-    // tag::includeAddFields[]
-    include file: 'add-address-fields-to-person.groovy'
-    // end::includeAddFields[]
-    // tag::includeCreateAddress[]
-    include file: 'create-address-table.groovy'
-    // end::includeCreateAddress[]
 
-// tag::changeLogEnding[]
+    include file: 'add-address-fields-to-person.groovy'
+
+    include file: 'create-address-table.groovy'
 }
-// end::changeLogEnding[]

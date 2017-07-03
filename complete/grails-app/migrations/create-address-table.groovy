@@ -27,7 +27,7 @@ databaseChangeLog = {
     }
 
     // tag::customDataSql[]
-    changeSet(author: "a488338 (generated)", id: "migrate-person-data") { // <1>
+    changeSet(author: "a488338 (generated)", id: "migrate-person-data") {
         sql("""insert into address (version, person_id, street_name, city, zip_code)
               select 0, id, street_name, city, zip_code from person""")
     }

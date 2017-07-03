@@ -13,7 +13,6 @@ databaseMigrationInAction:
   makeColumnNullable: Make Column Nullable
   addAttributes: Add Attributes
   redesignTables: Redesign Tables
-  additionalTips: Additional Tips
 summary:
     title: Summary
 runningTheApp:

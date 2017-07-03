@@ -12,7 +12,7 @@ include::{sourceDir}/src/version-code/Person.groovy_v0[indent=0]
 Create a controller with a scaffold in the appropriate package:
 
 [source, groovy]
-.grails-app/controllers/grails/database/migration/Person.groovy
+.grails-app/controllers/grails/database/migration/PersonController.groovy
 ----
 include::{sourceDir}/grails-app/controllers/grails/database/migration/PersonController.groovy[indent=0]
 ----
