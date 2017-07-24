@@ -11,6 +11,7 @@ return an empty set.
 ----
 > create database dbmigration character set utf8 collate utf8_general_ci;
 > use dbmigration;
+> show databases;
 > show tables;
 ----
 
@@ -33,7 +34,11 @@ include::{sourceDir}/build.gradle[tags=mysqlConnector]
 ...
 include::{sourceDir}/grails-app/conf/application.yml[tags=dataSource]
 ...
-include::{sourceDir}/grails-app/conf/application.yml[tags=dbUrl]
+environments:
+    development:
+        dataSource:
+            dbCreate: create-drop
+            url: jdbc:mysql://localhost:3306/dbmigration?useUnicode=yes&characterEncoding=UTF-8
 ...
 ----
 

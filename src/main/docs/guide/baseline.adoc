@@ -1,9 +1,18 @@
 We must create a baseline for database migration operations. This essentially consists of creating the initial database tables.
-This does not use GORM automation, rather by using liquibase in the plugin. (Note we have already defined the current state of the domain by
-creating the `Person` class, so we will be creating the database table in this step.)
+This does not use GORM automation. The database is created by using liquibase in the plugin. Note we have already defined the current state of the domain by
+creating the `Person` class, so we will delete that table and then recreate the database.
+
+Delete the `Person` table so that we can restart with liquibase in total control of database table creation.
+
+With MySql Command Client
+
+----
+> show tables;
+> drop table person;
+----
 
 Up till now GORM has been managing the creation of tables. This is based on the variable `dbCreate: create-drop`. We need
-the value to `none` so that liquibase can take over table creation. In addition, we will set the database url.
+the value to `none` so that liquibase can take over table creation.
 
 [source, groovy]
 .grails-app/conf/application.yml
@@ -24,14 +33,21 @@ include::{sourceDir}/grails-app/conf/application.yml[tags=updateOnStartUp]
 ----
 
 We can proceed to generate the `changelog.groovy` and then create the table with the plugin. The `changelog.groovy` will contain
- DSL instructions for table creation. Note that previously with the variable `dbCreate: create-drop`, at the current state when the application
- is not running, there will be no tables present. _Make sure the app is down before running these commands_:
+ DSL instructions for table creation. Note that with the variable `dbCreate: none`, only liquibase can create tables.
+ _Make sure the app is down before running these commands_:
 
 [source, bash]
 ----
 > grails dbm-generate-gorm-changelog changelog.groovy
 > grails dbm-update
 > grails run-app
+----
+
+You may see the below INFO log statement. It is a non-error:
+
+----
+INFO 7/24/17 11:29 AM: liquibase: Can not use class org.grails.plugins.databasemigration.liquibase.GormDatabase as a
+Liquibase service because it does not have a no-argument constructor
 ----
 
 View the database tables again in MySql Command Client

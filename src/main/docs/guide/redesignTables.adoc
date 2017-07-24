@@ -39,8 +39,10 @@ the liquibase declarations to migrate the schema:
 > grails dbm-gorm-diff create-address-table.groovy –add
 ----
 
-In order to move the existing data from the old tables to the new, we must add to the `create-address-table.groovy`. This custom sql
-MUST execute after the creation of the `Address` table but before the dropping of columns from the `Person` table.
+In order to move the existing data from the old tables to the new, we must add to the `create-address-table.groovy`.
+
+[yellow-background]#This custom sql MUST execute after the creation of the `Address` table but before the
+dropping of columns from the `Person` table.#
 
 [source, groovy]
 .grails-app/migrations/change-address-table.groovy
