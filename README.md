@@ -1,6 +1,6 @@
 # Grails Guide - Grails Database Migration
 
-This example application demonstrates techniques to test Grails Controllers 
+This example application demonstrates techniques use the Grails Database Migration Plugin.
 
 The completed example source code can be find in the `complete` directory.
 
