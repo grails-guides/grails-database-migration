@@ -3,7 +3,7 @@ We will add some attributes to the `Person` class for an address to demonstrate 
 image::migration2.jpg[400,400]
 
 [source, groovy]
-.grails-app/domain/grails/database/migration/Person.groovy
+.grails-app/domain/demo/Person.groovy
 ----
 include::{sourceDir}/src/version-code/Person.groovy_v2[indent=0]
 ----

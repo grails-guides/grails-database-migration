@@ -6,7 +6,7 @@ image::migration1.jpg[400,400]
 In the `Person` domain object, make the age attribute nullable:
 
 [source, groovy]
-.grails-app/domain/grails/database/migration/Person.groovy
+.grails-app/domain/demo/Person.groovy
 ----
 include::{sourceDir}/src/version-code/Person.groovy_v1[indent=0]
 ----

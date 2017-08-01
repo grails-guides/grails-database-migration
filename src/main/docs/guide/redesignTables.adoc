@@ -12,23 +12,23 @@ image::migration3.jpg[400,400]
 The `Person` and `Address` domain objects can be coded as below:
 
 [source, groovy]
-.grails-app/domain/grails/database/migration/Person.groovy
+.grails-app/domain/demo/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/grails/database/migration/Person.groovy[indent=0]
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[indent=0]
 ----
 
 [source, groovy]
-.grails-app/domain/grails/database/migration/Address.groovy
+.grails-app/domain/demo/Address.groovy
 ----
-include::{sourceDir}/grails-app/domain/grails/database/migration/Address.groovy[indent=0]
+include::{sourceDir}/grails-app/domain/demo/Address.groovy[indent=0]
 ----
 
 Create a controller with a scaffold in the appropriate package. This is so we can view it in the UI after the migration is performed.
 
 [source, groovy]
-.grails-app/controllers/grails/database/migration/AddressController.groovy
+.grails-app/controllers/demo/AddressController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/grails/database/migration/AddressController.groovy[indent=0]
+include::{sourceDir}/grails-app/controllers/demo/AddressController.groovy[indent=0]
 ----
 
 Run the database migration command that will compare the new domain objects to the existing database and generate

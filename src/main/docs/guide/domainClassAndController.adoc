@@ -4,7 +4,7 @@ that our application runs. We will then move onto the database migration aspects
 Create a domain class in the appropriate package:
 
 [source, groovy]
-.grails-app/domain/grails/database/migration/Person.groovy
+.grails-app/domain/demo/Person.groovy
 ----
 include::{sourceDir}/src/version-code/Person.groovy_v0[indent=0]
 ----
@@ -12,17 +12,17 @@ include::{sourceDir}/src/version-code/Person.groovy_v0[indent=0]
 Create a controller with a scaffold in the appropriate package:
 
 [source, groovy]
-.grails-app/controllers/grails/database/migration/PersonController.groovy
+.grails-app/controllers/demo/PersonController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/grails/database/migration/PersonController.groovy[indent=0]
+include::{sourceDir}/grails-app/controllers/demo/PersonController.groovy[indent=0]
 ----
 
 In order to create some seed data, add to the `BootStrap.groovy`.
 
 [source, groovy]
-.grails-app/init/grails/database/migration/BootStrap.groovy
+.grails-app/init/demo/BootStrap.groovy
 ----
-include::{sourceDir}/grails-app/init/grails/database/migration/BootStrap.groovy[indent=0]
+include::{sourceDir}/grails-app/init/demo/BootStrap.groovy[indent=0]
 ----
 
 Run the Grails application. This will allow GORM to create the `Person` table automatically, create data, and startup the application.
