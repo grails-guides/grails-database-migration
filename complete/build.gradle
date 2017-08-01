@@ -7,7 +7,9 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.2"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        //tag::databaseMigrationBuildscriptDependency[]
         classpath 'org.grails.plugins:database-migration:3.0.3'
+        //end::databaseMigrationBuildscriptDependency[]
     }
 }
 
@@ -61,8 +63,12 @@ dependencies {
     testCompile "org.grails:grails-web-testing-support"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    //tag::databaseMigrationDependency[]
     compile 'org.grails.plugins:database-migration:3.0.3'
+    //end::databaseMigrationDependency[]
+    //tag::liquibaseDependency[]
     compile 'org.liquibase:liquibase-core:3.5.3'
+    //end::liquibaseDependency[]
 }
 
 bootRun {
@@ -76,6 +82,7 @@ assets {
     minifyCss = true
 }
 
+//tag::migrationsFolder[]
 sourceSets {
     main {
         resources {
@@ -83,3 +90,4 @@ sourceSets {
         }
     }
 }
+//end::migrationsFolder[]

@@ -5,15 +5,14 @@ gettingStarted:
 writingTheApp:
   title: Writing the Application
   installDatabase: Install Database
-  domainClassAndController: Domain Class and Controller
+  domainClassAndController: Domain Class
   installPlugin: Install Database Migration Plugin
-databaseMigrationInAction:
-  title: Database Migration In Action
+  databaseMigrationInAction: Database Migration In Action  
   baseline: Baseline for Database Migration
   makeColumnNullable: Make Column Nullable
   addAttributes: Add Attributes
   redesignTables: Redesign Tables
 summary:
     title: Summary
-runningTheApp:
-    title: Running the Application
+helpWithGrails:
+  title: Do you need help with Grails?  

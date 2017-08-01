@@ -1,3 +1,5 @@
+=== Create a MySQL Database
+
 Let's setup a physical database with MySql, instead of relying on the default H2 in memory database.
 
 - Go to http://www.mysql.com/downloads[MySql] to install a database
@@ -6,6 +8,8 @@ Let's setup a physical database with MySql, instead of relying on the default H2
 
 Run these commands in the command line client in order to create and use the database. The `show tables` command should
 return an empty set.
+
+=== Setup Grails to use a MySQL database 
 
 [source, bash]
 ----
@@ -31,20 +35,9 @@ include::{sourceDir}/build.gradle[tags=mysqlConnector]
 [source, yaml]
 .grails-app/conf/application.yml
 ----
-...
 include::{sourceDir}/grails-app/conf/application.yml[tags=dataSource]
-...
-environments:
-    development:
-        dataSource:
-            dbCreate: create-drop
-            url: jdbc:mysql://localhost:3306/dbmigration?useUnicode=yes&characterEncoding=UTF-8
-...
+include::{sourceDir}/grails-app/conf/application.yml[tags=dbUrl]
 ----
 
-Run the Grails application to make sure it connects properly at `http://localhost:8080`.
-
-[source, bash]
-----
-> grails run-app
-----
+<1> `dbCreate` defines whether we want to auto-generate the database from the domain model. We set it to `none` since we are going to manage the 
+management of the database schema with Grails Database Migration Plugin. 

@@ -11,13 +11,9 @@ class Address {
 
     static belongsTo = [person: Person]
 
-    String toString() {
-        "${streetName}, ${city}, ${zipCode}"
-    }
-
     static constraints = {
-        streetName(nullable: true)
-        city(nullable: true)
-        zipCode(nullable: true)
+        streetName nullable: true
+        city nullable: true
+        zipCode nullable: true
     }
 }

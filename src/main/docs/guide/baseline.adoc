@@ -1,28 +1,7 @@
-We must create a baseline for database migration operations. This essentially consists of creating the initial database tables.
-This does not use GORM automation. The database is created by using liquibase in the plugin. Note we have already defined the current state of the domain by
-creating the `Person` class, so we will delete that table and then recreate the database.
+Instead of using GORM schema auto-generation, the database schema is going to changed with http://www.liquibase.org[Liquibase]; the database migration tool which the Grails Database Migration Plugin uses. 
 
-Delete the `Person` table so that we can restart with liquibase in total control of database table creation.
+We want to run migrations on startup and our migrations are going to be located in `changelog.groovy`
 
-With MySql Command Client
-
-----
-> show tables;
-> drop table person;
-----
-
-Up till now GORM has been managing the creation of tables. This is based on the variable `dbCreate: create-drop`. We need
-the value to `none` so that liquibase can take over table creation.
-
-[source, groovy]
-.grails-app/conf/application.yml
-----
-...
-include::{sourceDir}/grails-app/conf/application.yml[tags=dbUrl]
-...
-----
-
-Next we need to tell the plugin that we want to run migrations on startup.
 
 [source, groovy]
 .grails-app/conf/application.yml
@@ -32,15 +11,19 @@ include::{sourceDir}/grails-app/conf/application.yml[tags=updateOnStartUp]
 ...
 ----
 
-We can proceed to generate the `changelog.groovy` and then create the table with the plugin. The `changelog.groovy` will contain
- DSL instructions for table creation. Note that with the variable `dbCreate: none`, only liquibase can create tables.
- _Make sure the app is down before running these commands_:
+The plugin comes with several commands, one of those commands, `dbm-generate-gorm-changelog` generates an initial changelog with a Groovy DSL file from current GORM classes 
 
 [source, bash]
 ----
 > grails dbm-generate-gorm-changelog changelog.groovy
-> grails dbm-update
-> grails run-app
+----
+
+This will generate a changelog such as: 
+
+[source, groovy]
+.grails-app/migrations/changelog.groovy
+----
+include::{sourceDir}/grails-app/migrations/create-person-table.groovy[]
 ----
 
 You may see the below INFO log statement. It is a non-error:
@@ -50,9 +33,81 @@ INFO 7/24/17 11:29 AM: liquibase: Can not use class org.grails.plugins.databasem
 Liquibase service because it does not have a no-argument constructor
 ----
 
-View the database tables again in MySql Command Client
+Move the initial changelog to its own file and reference it from the main changelog file. 
 
+[source, bash]
+----
+$ cp grails-app/migrations/changelog.groovy grails-app/migrations/create-person-table.groovy
+----
+
+Replace the content of _changelog.groovy_ with:
+
+[source, groovy]
+.grails-app/migrations/changelog.groovy
+----
+databaseChangeLog = {
+include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=createPersonTable]
+}
+----
+
+
+Apply the migration:
+
+[source, bash]
+----
+$ grails dbm-update
+----
+
+
+The database tables are created:
+
+[source, sql]
 ----
 > show tables;
+----
+
+|===
+|Tables in dbmigration
+| DATABASECHANGELOG
+|DATABASECHANGELOGLOCK
+|person
+|===
+
+
+The tables `DATABASECHANGELOG`, `DATABASECHANGELOGLOCK` are used by the Database Migration Plugin to keep track of database migrations.
+
+The `person` table correspond to the `Person` Domain Class. 
+
+[source, sql]
+----
 > describe person;
 ----
+
+
+|===
+|Field|Type|Null|Key|Default|Extra
+|id
+|bigint(20)
+|NO
+|Pri
+|<null>
+|auto_increment
+|version
+|bigint(20)
+|NO
+|
+|<null>
+|
+|age
+|int(11)
+|NO
+|
+|<null>
+|
+|name
+|varchar(255)
+|NO
+|
+|<null>
+|
+|===

@@ -14,21 +14,27 @@ The `Person` and `Address` domain objects can be coded as below:
 [source, groovy]
 .grails-app/domain/demo/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[indent=0]
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=package]
+
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=import]
+
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=class]
+
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=properties]
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=hasMany]
+
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=openConstraints]
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=ageConstraints]       
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeConstraints]
+
+
+include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
 ----
 
 [source, groovy]
 .grails-app/domain/demo/Address.groovy
 ----
 include::{sourceDir}/grails-app/domain/demo/Address.groovy[indent=0]
-----
-
-Create a controller with a scaffold in the appropriate package. This is so we can view it in the UI after the migration is performed.
-
-[source, groovy]
-.grails-app/controllers/demo/AddressController.groovy
-----
-include::{sourceDir}/grails-app/controllers/demo/AddressController.groovy[indent=0]
 ----
 
 Run the database migration command that will compare the new domain objects to the existing database and generate
@@ -39,32 +45,134 @@ the liquibase declarations to migrate the schema:
 > grails dbm-gorm-diff create-address-table.groovy –add
 ----
 
-In order to move the existing data from the old tables to the new, we must add to the `create-address-table.groovy`.
-
-[yellow-background]#This custom sql MUST execute after the creation of the `Address` table but before the
-dropping of columns from the `Person` table.#
+The command adds a new include statement to `changelog.groovy`
 
 [source, groovy]
-.grails-app/migrations/change-address-table.groovy
+.grails-app/migrations/changelog.groovy
 ----
-// creation of address...
-include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tags=customDataSql]
-// drop person columns...
+databaseChangeLog = {
+include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=createPersonTable]
+include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=changeAgeConstraintToNullable]
+include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=addAddressFieldsToPerson]
+include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=createAddressTable]
+}
 ----
 
-Run the Grails application. View the data is migrated in the UI.
+An individual changeset is created too:
+
+[source, groovy]
+.grails-app/migrations/create-address-table.groovy.groovy
+----
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=createAddressTable]
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=foreignKey]
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=dropColumns]
+----
+
+We are going to add manually a changeset to move the existing data from the old tables to the new.
+
+The final version of `create-address-table.groovy.groovy` looks like:
+
+[source, groovy]
+.grails-app/migrations/create-address-table.groovy.groovy
+----
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=createAddressTable]
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=foreignKey]
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=customDataSql]
+include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=dropColumns]
+----
+
+<1> The changeset we added, executes after the creation of the `Address` table but before the
+dropping of columns from the `Person` table.
+
+Run the migration
 
 [source, bash]
 ----
-> grails run-app
+$ grails dbm-update
 ----
 
-Check the table descriptions in the MySql Client:
+The person table looks like:
 
+[source, sql]
 ----
-> show tables;
-> select * from person;
-> describe person;
-> select * from address;
-> describe address;
+$ describe person
 ----
+
+|===
+|Field|Type|Null|Key|Default|Extra
+|id
+|bigint(20)
+|NO
+|Pri
+|<null>
+|auto_increment
+|version
+|bigint(20)
+|NO
+|
+|<null>
+|
+|age
+|int(11)
+|YES
+|
+|<null>
+|
+|name
+|varchar(255)
+|NO
+|
+|<null>
+|
+|===
+
+
+The address table looks like:
+
+
+[source, sql]
+----
+$ describe address
+----
+
+
+|===
+|Field|Type|Null|Key|Default|Extra
+|id
+|bigint(20)
+|NO
+|Pri
+|<null>
+|auto_increment
+|version
+|bigint(20)
+|NO
+|
+|<null>
+|
+|person_id
+|bigint(20)
+|NO
+|MUL
+|<null>
+|
+|city
+|varchar(255)
+|YES
+|
+|<null>
+|
+|street_name
+|varchar(255)
+|YES
+|
+|<null>
+|
+|zip_code
+|varchar(255)
+|YES
+|
+|<null>
+|
+|===
+
