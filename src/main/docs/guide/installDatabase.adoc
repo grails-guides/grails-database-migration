@@ -28,7 +28,7 @@ include::{sourceDir}/build.gradle[tags=mysqlConnector]
 }
 ----
 
-[source, groovy]
+[source, yaml]
 .grails-app/conf/application.yml
 ----
 ...
