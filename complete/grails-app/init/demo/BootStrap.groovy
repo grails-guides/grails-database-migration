@@ -16,7 +16,7 @@ class BootStrap {
         List<Map<String, Object>> persons = [
                 [name: 'Nirav', age: 39],
                 [name: 'Jeff', age: 45],
-                [name: 'Sergio', age: 36]
+                [name: 'Sergio', age: 34]
         ]
 
         for ( Map<String, Object> p : persons ) {
