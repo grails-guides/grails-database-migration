@@ -1,4 +1,4 @@
-package grails.database.migration
+package demo
 
 class UrlMappings {
 

@@ -1,5 +1,6 @@
-package grails.database.migration
+package demo
 
+import demo.Person
 import grails.util.Environment
 
 class BootStrap {

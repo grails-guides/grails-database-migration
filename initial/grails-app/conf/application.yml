@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: grails.database.migration
+        defaultPackage: demo
     spring:
         transactionManagement:
             proxies: false
