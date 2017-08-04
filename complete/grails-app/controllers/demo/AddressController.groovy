@@ -1,6 +1,6 @@
 package demo
 
-@import groovy.transform.CompileStatic
+import groovy.transform.CompileStatic
 
 @CompileStatic
 class AddressController {

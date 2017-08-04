@@ -1,10 +1,9 @@
 package demo
 
-import demo.Person
+import grails.compiler.GrailsCompileStatic
 import grails.util.Environment
-import groovy.transform.CompileStatic
 
-@CompileStatic
+@GrailsCompileStatic
 class BootStrap {
 
     def init = { servletContext ->
