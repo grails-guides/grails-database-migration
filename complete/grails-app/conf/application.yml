@@ -141,5 +141,5 @@ grails:
     plugin:
         databasemigration:
             updateOnStart: true
-            updateOnStartFileNames: changelog.groovy
+            updateOnStartFileName: changelog.groovy
 # end::updateOnStartUp[]
