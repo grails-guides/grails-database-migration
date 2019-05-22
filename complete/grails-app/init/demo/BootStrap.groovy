@@ -22,7 +22,7 @@ class BootStrap {
             [name: 'Jeff', age: 45],
             [name: 'Sergio', age: 34]
         ].each { Map m ->
-            Person.findByName(m.name) ?: new Person(m).save(flush: true)
+            Person.findByName(m.name) ?: new Person(m).save()
         }
     }
 }
