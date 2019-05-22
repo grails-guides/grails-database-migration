@@ -9,7 +9,7 @@ buildscript {
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.0.7"
         classpath "org.grails.plugins:hibernate5:7.0.0"
         //tag::databaseMigrationBuildscriptDependency[]
-        classpath 'org.grails.plugins:database-migration:4.0.0.BUILD-SNAPSHOT'
+        classpath 'org.grails.plugins:database-migration:3.1.0.BUILD-SNAPSHOT'
         //end::databaseMigrationBuildscriptDependency[]
     }
 }
@@ -36,6 +36,16 @@ configurations {
         extendsFrom developmentOnly
     }
 }
+
+//tag::migrationsFolder[]
+sourceSets {
+    main {
+        resources {
+            srcDir 'grails-app/migrations'
+        }
+    }
+}
+//end::migrationsFolder[]
 
 dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -79,7 +89,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:3.12.0"
     testRuntime "org.seleniumhq.selenium:selenium-firefox-driver:3.12.0"
     //tag::databaseMigrationDependency[]
-    compile 'org.grails.plugins:database-migration:4.0.0.BUILD-SNAPSHOT'
+    compile 'org.grails.plugins:database-migration:3.1.0.BUILD-SNAPSHOT'
     //end::databaseMigrationDependency[]
     //tag::liquibaseDependency[]
     compile 'org.liquibase:liquibase-core:3.5.3'
@@ -101,18 +111,4 @@ assets {
 webdriverBinaries {
     chromedriver '2.45'
     geckodriver '0.23.0'
-}
-
-//tag::migrationsFolder[]
-sourceSets {
-    main {
-        resources {
-            srcDir 'grails-app/migrations'
-        }
-    }
-}
-//end::migrationsFolder[]
-
-grails {
-    pathingJar = true
 }

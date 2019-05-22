@@ -18,7 +18,8 @@ include::{sourceDir}/build.gradle[tags=liquibaseDependency]
 }
 ----
 
-Tell Gradle about the migrations folder location too:
+Tell Gradle about the migrations folder location too. Make sure this configuration is BEFORE the `dependencies` configuration,
+so that the folder declaration takes effect:
 
 
 [source, groovy]
