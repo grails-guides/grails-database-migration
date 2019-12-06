@@ -76,11 +76,6 @@ bootRun {
     systemProperty springProfilesActive, System.getProperty(springProfilesActive)
 }
 
-webdriverBinaries {
-    chromedriver '2.45'
-    geckodriver '0.23.0'
-}
-
 assets {
     minifyJs = true
     minifyCss = true
