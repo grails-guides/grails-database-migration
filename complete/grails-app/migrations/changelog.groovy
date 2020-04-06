@@ -13,7 +13,7 @@ databaseChangeLog = {
     include file: 'add-address-fields-to-person.groovy'
 //end::addAddressFieldsToPerson[]
 
-//end::createAddressTable[]
+//tag::createAddressTable[]
     include file: 'create-address-table.groovy'
 //end::createAddressTable[]
 }

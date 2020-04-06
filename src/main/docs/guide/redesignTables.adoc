@@ -61,7 +61,7 @@ include::{sourceDir}/grails-app/migrations/changelog.groovy[tag=createAddressTab
 An individual changeset is created too:
 
 [source, groovy]
-.grails-app/migrations/create-address-table.groovy.groovy
+.grails-app/migrations/create-address-table.groovy
 ----
 include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=createAddressTable]
 include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=foreignKey]
@@ -70,10 +70,10 @@ include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=dropC
 
 We are going to add manually a changeset to move the existing data from the old tables to the new.
 
-The final version of `create-address-table.groovy.groovy` looks like:
+The final version of `create-address-table.groovy` looks like:
 
 [source, groovy]
-.grails-app/migrations/create-address-table.groovy.groovy
+.grails-app/migrations/create-address-table.groovy
 ----
 include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=createAddressTable]
 include::{sourceDir}/grails-app/migrations/create-address-table.groovy[tag=foreignKey]
