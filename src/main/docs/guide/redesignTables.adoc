@@ -42,7 +42,7 @@ the liquibase declarations to migrate the schema:
 
 [source, bash]
 ----
-> grails dbm-gorm-diff create-address-table.groovy –add
+$ ./gradlew runCommand "-Pargs=dbm-gorm-diff create-address-table.groovy –add"
 ----
 
 The command adds a new include statement to `changelog.groovy`
@@ -88,14 +88,14 @@ Run the migration
 
 [source, bash]
 ----
-$ grails dbm-update
+$ ./gradlew runCommand "-Pargs=dbm-update"
 ----
 
 The person table looks like:
 
 [source, sql]
 ----
-$ describe person
+> DESCRIBE person
 ----
 
 |===
@@ -132,7 +132,7 @@ The address table looks like:
 
 [source, sql]
 ----
-$ describe address
+> DESCRIBE address
 ----
 
 

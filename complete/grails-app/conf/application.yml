@@ -1,36 +1,20 @@
----
-grails:
-    profile: web
-    codegen:
-        defaultPackage: demo
-    spring:
-        transactionManagement:
-            proxies: false
-    gorm:
-        reactor:
-            # Whether to translate GORM events into Reactor events
-            # Disabled by default for performance reasons
-            events: false
 info:
     app:
-        name: '@info.app.name@'
-        version: '@info.app.version@'
-        grailsVersion: '@info.app.grailsVersion@'
-spring:
-    main:
-        banner-mode: "off"
-    groovy:
-        template:
-            check-template-location: false
-
-# Spring Actuator Endpoints are Disabled by Default
-endpoints:
-    enabled: false
-    jmx:
-        enabled: true
-
----
+        name: 'grails.dbmigration'
+        version: '0.1'
+        grailsVersion: '6.0.0-RC1'
 grails:
+    views:
+        default:
+            codec: html
+        gsp:
+            encoding: UTF-8
+            htmlcodec: xml
+            codecs:
+                expression: html
+                scriptlet: html
+                taglib: none
+                staticparts: none
     mime:
         disable:
             accept:
@@ -47,71 +31,52 @@ grails:
             csv: text/csv
             form: application/x-www-form-urlencoded
             html:
-              - text/html
-              - application/xhtml+xml
+                - text/html
+                - application/xhtml+xml
             js: text/javascript
             json:
-              - application/json
-              - text/json
+                - application/json
+                - text/json
             multipartForm: multipart/form-data
             pdf: application/pdf
             rss: application/rss+xml
             text: text/plain
             hal:
-              - application/hal+json
-              - application/hal+xml
+                - application/hal+json
+                - application/hal+xml
             xml:
-              - text/xml
-              - application/xml
-    urlmapping:
-        cache:
-            maxsize: 1000
-    controllers:
-        defaultScope: singleton
-    converters:
-        encoding: UTF-8
-    views:
-        default:
-            codec: html
-        gsp:
-            encoding: UTF-8
-            htmlcodec: xml
-            codecs:
-                expression: html
-                scriptlets: html
-                taglib: none
-                staticparts: none
-endpoints:
-    jmx:
-        unique-names: true
+                - text/xml
+                - application/xml
+    gorm:
+        reactor:
+            events: false
 
----
+# tag::dataSource[]
+dataSource:
+    driverClassName: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    username: '${MYSQL_USER}'
+    password: '${MYSQL_PASSWORD}'
+    pooled: true
+    jmxExport: true
+# end::dataSource[]
+
 hibernate:
     cache:
         queries: false
         use_second_level_cache: false
         use_query_cache: false
 
-# tag::dataSource[]
-dataSource:
-    pooled: true
-    jmxExport: true
-    driverClassName: com.mysql.jdbc.Driver
-    dialect: org.hibernate.dialect.MySQL5InnoDBDialect    
-    username: root
-    password: root
-# end::dataSource[]
-
 # tag::dbUrl[]
 environments:
     development:
         dataSource:
             dbCreate: none # <1>
-            url: jdbc:mysql://localhost:3306/dbmigration?useUnicode=yes&characterEncoding=UTF-8
+            url: jdbc:mysql://localhost:3306/devDb?useUnicode=yes&characterEncoding=UTF-8
 # end::dbUrl[]
     test:
         dataSource:
-            dbCreate: update
+            dbCreate: none
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
@@ -135,7 +100,7 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-
+---
 # tag::updateOnStartUp[]
 grails:
     plugin:

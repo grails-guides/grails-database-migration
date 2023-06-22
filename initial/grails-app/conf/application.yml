@@ -1,6 +1,6 @@
 info:
   app:
-    name: demo
+    name: grails.dbmigration
     version: '0.1'
     grailsVersion: 6.0.0-RC1
 grails:

@@ -1,4 +1,4 @@
-package demo
+package grails.dbmigration
 
 import grails.compiler.GrailsCompileStatic
 

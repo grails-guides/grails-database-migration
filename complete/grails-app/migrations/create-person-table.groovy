@@ -1,9 +1,9 @@
 databaseChangeLog = {
 
-    changeSet(author: "Nirav Assar (generated)", id: "1497549057046-1") {
+    changeSet(author: "behl (generated)", id: "1687423705657-1") {
         createTable(tableName: "person") {
             column(autoIncrement: "true", name: "id", type: "BIGINT") {
-                constraints(primaryKey: "true", primaryKeyName: "personPK")
+                constraints(nullable: "false", primaryKey: "true", primaryKeyName: "personPK")
             }
 
             column(name: "version", type: "BIGINT") {

@@ -15,7 +15,7 @@ The plugin comes with several commands, one of those commands, `dbm-generate-gor
 
 [source, bash]
 ----
-> grails dbm-generate-gorm-changelog changelog.groovy
+$ ./gradlew runCommand "-Pargs=dbm-generate-gorm-changelog changelog.groovy"
 ----
 
 This will generate a changelog such as: 
@@ -55,7 +55,7 @@ Apply the migration:
 
 [source, bash]
 ----
-$ grails dbm-update
+$ ./gradlew runCommand "-Pargs=dbm-update"
 ----
 
 
@@ -63,7 +63,7 @@ The database tables are created:
 
 [source, sql]
 ----
-> show tables;
+> SHOW TABLES;
 ----
 
 |===
@@ -80,7 +80,7 @@ The `person` table correspond to the `Person` Domain Class.
 
 [source, sql]
 ----
-> describe person;
+> DESCRIBE person;
 ----
 
 

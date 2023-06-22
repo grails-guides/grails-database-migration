@@ -1,5 +1,5 @@
 //tag::package[]    
-package demo
+package grails.dbmigration
 //end::package[]    
 
 //tag::import[]    
@@ -14,19 +14,19 @@ class Person {
     //tag::properties[]    
     String name
     Integer age
-    //end::properties[]    
+    //end::properties[]
 
-
-	//tag::hasMany[]    
+	//tag::hasMany[]
     static hasMany = [addresses: Address]
-    //end::hasMany[]    
+    //end::hasMany[]
 
     //tag::openConstraints[]
     static constraints = {
 	//end::openConstraints[]
-	//tag::ageConstraints[]
+        name nullable: false
+        //tag::ageConstraints[]
         age nullable: true
-        //end::ageConstraints[]        
+        //end::ageConstraints[]
 	//tag::closeConstraints[]
     }
     //end::closeConstraints[]

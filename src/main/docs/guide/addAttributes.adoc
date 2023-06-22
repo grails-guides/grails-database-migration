@@ -31,7 +31,7 @@ If we generate a changeset for these changes:
 
 [source, bash]
 ----
-> grails dbm-gorm-diff add-address-fields-to-person.groovy --add
+$ ./gradlew runCommand "-Pargs=dbm-gorm-diff add-address-fields-to-person.groovy --add"
 ----
 
 The command adds a new include statement to `changelog.groovy`
@@ -58,14 +58,14 @@ if we run the migration
 
 [source, bash]
 ----
-$ grails dbm-update
+$ ./gradlew runCommand "-Pargs=dbm-update"
 ----
 
 New columns `streetName`, `city`, `zipCode` are created in the `person` table; 
 
 [source, sql]
 ----
-$ describe person
+> describe person
 ----
 
 

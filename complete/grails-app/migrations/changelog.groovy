@@ -8,7 +8,6 @@ databaseChangeLog = {
     include file: 'change-age-constraint-to-nullable.groovy'
 //end::changeAgeConstraintToNullable[]
 
-
 //tag::addAddressFieldsToPerson[]
     include file: 'add-address-fields-to-person.groovy'
 //end::addAddressFieldsToPerson[]

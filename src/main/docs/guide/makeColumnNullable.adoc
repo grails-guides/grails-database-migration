@@ -25,11 +25,11 @@ include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
 
 
 Note that making the change in the domain object does not affect the database. We must generate additions to the `changelog.groovy`
-for the change to take affect. Run the next command:
+for the change to take effect. Run the next command:
 
 [source, bash]
 ----
-> grails dbm-gorm-diff change-age-constraint-to-nullable.groovy --add
+$ ./gradlew runCommand "-Pargs=dbm-gorm-diff change-age-constraint-to-nullable.groovy --add"
 ----
 
 A new include statement has been added to `changelog.groovy`
@@ -55,7 +55,7 @@ if we run the migration
 
 [source, bash]
 ----
-$ grails dbm-update
+$ ./gradlew runCommand "-Pargs=dbm-update"
 ----
 
 The column `age` in the `person` table is nullable as expressed in the constraint:
