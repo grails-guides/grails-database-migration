@@ -3,28 +3,28 @@ We will add some attributes to the `Person` class for an address to demonstrate 
 image::migration2.jpg[400,400]
 
 [source, groovy]
-.grails-app/domain/demo/Person.groovy
+.grails-app/domain/grails/dbmigration/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=package]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=package]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=import]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=import]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=class]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=class]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=properties]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=properties]
     String streetName
     String city
     String zipCode
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=openConstraints]
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=ageConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=openConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=ageConstraints]
         streetName nullable: true
         city nullable: true
         zipCode nullable: true
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeConstraints]
 
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeClass]
 ----
 
 If we generate a changeset for these changes:

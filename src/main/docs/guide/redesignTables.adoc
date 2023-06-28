@@ -12,29 +12,29 @@ image::migration3.jpg[400,400]
 The `Person` and `Address` domain objects can be coded as below:
 
 [source, groovy]
-.grails-app/domain/demo/Person.groovy
+.grails-app/domain/grails/dbmigration/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=package]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=package]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=import]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=import]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=class]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=class]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=properties]
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=hasMany]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=properties]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=hasMany]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=openConstraints]
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=ageConstraints]       
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=openConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=ageConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeConstraints]
 
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeClass]
 ----
 
 [source, groovy]
-.grails-app/domain/demo/Address.groovy
+.grails-app/domain/grails/dbmigration/Address.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Address.groovy[indent=0]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Address.groovy[indent=0]
 ----
 
 Run the database migration command that will compare the new domain objects to the existing database and generate

@@ -2,15 +2,15 @@ Create a domain class in the appropriate package:
 
 
 [source, groovy]
-.grails-app/domain/demo/Person.groovy
+.grails-app/domain/grails/dbmigration/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=package]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=package]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=import]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=import]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=class]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=class]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=properties]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=properties]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeClass]
 ----

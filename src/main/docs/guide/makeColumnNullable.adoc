@@ -6,21 +6,21 @@ image::migration1.jpg[400,400]
 In the `Person` domain object, make the age attribute nullable:
 
 [source, groovy]
-.grails-app/domain/demo/Person.groovy
+.grails-app/domain/grails/dbmigration/Person.groovy
 ----
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=package]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=package]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=import]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=import]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=class]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=class]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=properties]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=properties]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=openConstraints]
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=ageConstraints]
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=openConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=ageConstraints]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeConstraints]
 
-include::{sourceDir}/grails-app/domain/demo/Person.groovy[tag=closeClass]
+include::{sourceDir}/grails-app/domain/grails/dbmigration/Person.groovy[tag=closeClass]
 ----
 
 
