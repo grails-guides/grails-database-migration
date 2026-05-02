@@ -1,28 +1,37 @@
-name: Java CI with Gradle
+name: Gradle
 on:
   push:
-    branches:
-      - master
-      - 'grails[3-9]'
+    branches: [grails3, grails4, grails5, grails6]
   pull_request:
-    branches:
-      - master
-      - 'grails[3-9]'
-  workflow_dispatch:
+    branches: [grails3, grails4, grails5, grails6]
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v4
+      - id: java
+        shell: bash
+        run: |
+          BRANCH="${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}"
+          case "$BRANCH" in
+            grails6) echo "version=17" >> "$GITHUB_OUTPUT" ;;
+            grails3|grails4|grails5) echo "version=11" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Unsupported branch: $BRANCH"; exit 1 ;;
+          esac
+      - uses: actions/setup-java@v4
         with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: gradle
-      - name: Run script
-        run: ./githubactions-build.sh
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIT_NAME: ${{ secrets.GIT_NAME }}
-          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+          distribution: temurin
+          java-version: ${{ steps.java.outputs.version }}
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ steps.java.outputs.version }}-${{ hashFiles('**/*.gradle*', '**/settings.gradle*', '**/gradle.properties', 'gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-${{ steps.java.outputs.version }}-
+            ${{ runner.os }}-gradle-
+      - run: chmod +x ./gradlew
+      - run: ./gradlew --no-daemon check
