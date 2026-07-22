@@ -1,8 +1,7 @@
 grails:
   plugin:
     databasemigration:
-      updateOnStart: true
-      updateOnStartFileName: changelog.groovy
+      updateOnStart: false
 
 dataSource:
   url: jdbc:tc:postgresql:16:///postgres
