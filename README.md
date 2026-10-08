@@ -1,6 +1,6 @@
 # grails-database-migration
 
-Sample app for **Managing Your Database Schema with the Grails Database Migration Plugin (Grails 8)** (Apache Grails `8.0.0-SNAPSHOT`, JDK 21).
+Sample app for **Managing Your Database Schema with the Grails Database Migration Plugin (Grails 8)** (Apache Grails `8.0.0`, JDK 21).
 
 The guide walks through evolving a PostgreSQL schema safely across releases with Liquibase changelogs: baseline the schema from GORM domains, make columns nullable, add columns, redesign tables, and migrate existing data with custom SQL - without relying on Hibernate `dbCreate` auto-DDL.
 
